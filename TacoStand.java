@@ -71,17 +71,26 @@ public class TacoStand
 	 */
 	public static boolean orderSupplies(double budget)
 	{
-		//tacos cost 75 cents each in supplies, keeping it simple
-	    int tacosEach = (int)(Math.round(budget / 0.75 / 4));
 
-	    TacoStand.totalFunds -= budget;
+		if(budget <= totalFunds){
+			
+				//tacos cost 75 cents each in supplies, keeping it simple
+				int tacosEach = (int)(Math.round(budget / 0.75 / 4));
+			TacoStand.totalFunds -= budget;
 
-	    TacoStand.numAsada += tacosEach;
-	    TacoStand.numPollo += tacosEach;
-	    TacoStand.numLengua += tacosEach;
-	    TacoStand.numUltimate += tacosEach;
+			TacoStand.numAsada += tacosEach;
+			TacoStand.numPollo += tacosEach;
+			TacoStand.numLengua += tacosEach;
+			TacoStand.numUltimate += tacosEach;
+			return true;
+		}
+		else{
+			return false;
+		}
 
-		return true;  //TODO: this is stubbed, replace this line with your actual code!
+
+	
+		
 	}
 
 	/**
@@ -93,7 +102,63 @@ public class TacoStand
 	 */
 	public static void updateTotalFunds(int tacoOption, int numTacos)
 	{
+		
 		//TODO: this is stubbed, replace this line with your actual code!
+		
+		
+		if (tacoOption == 1) { // asada Tacos
+            if (numTacos <= numAsada) 
+			{
+                numAsada -= numTacos;  // Deduct the tacos from stock
+                
+            } else 
+			{
+                System.out.println(" we only have " + numAsada + " Asada tacos left.");
+            }
+        } 
+		else if (tacoOption == 2) 
+		{ 
+            if (numTacos <= numPollo) 
+			{
+                numPollo -= numTacos;
+
+              
+            } 
+			
+			else 
+			{
+                System.out.println("we only have " + numPollo + " pollo tacos left.");
+            }
+        
+		} 
+		else if (tacoOption == 3) 
+		{ 
+            if (numTacos <= numLengua) 
+			{
+                numLengua -= numTacos;
+                
+            } 
+			else 
+			{
+                System.out.println("we only have " + numLengua + " Lengua tacos left.");
+            }
+        } else if (tacoOption == 4) 
+		{
+			 
+            if (numTacos <= numUltimate) 
+			{
+                numUltimate -= numTacos;
+              
+            } 
+			else 
+			{
+
+                System.out.println("we only have " + numUltimate + " ultimate tacos left.");
+            }
+        } 
+		
+		
+	
 	}
 	
 	
@@ -107,6 +172,14 @@ public class TacoStand
 	 */
 	public static boolean areTacosAvailable(int tacoOption, int numTacos)
 	{
+		if (numTacos < tacoOption)
+		{
+			System.out.println("We don't have that many tacos, sorry! Try again :(");
+ 
+
+		}
+		
+		
 		return false; //TODO: this is stubbed, replace this line with your actual code!
 	}
 }
